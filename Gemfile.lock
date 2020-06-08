@@ -127,6 +127,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rb-readline (0.5.5)
+    shutup (0.0.6)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -138,6 +139,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sqlite3 (1.4.1)
     thor (1.0.1)
     thread_safe (0.3.6)
     tzinfo (1.2.7)
@@ -160,8 +162,10 @@ DEPENDENCIES
   rack-cors
   rails (~> 6.0.3, >= 6.0.3.1)
   rb-readline
+  shutup (~> 0.0.3)
   spring
   spring-watcher-listen (~> 2.0.0)
+  sqlite3
   tzinfo-data
 
 RUBY VERSION
