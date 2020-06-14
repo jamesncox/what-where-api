@@ -3,6 +3,6 @@ class Store < ApplicationRecord
     has_many :items
 
     validates :name, presence: true
-    validates :type, presence: true 
+    validates :store_type, presence: true 
     validates :color, presence: true
 end
