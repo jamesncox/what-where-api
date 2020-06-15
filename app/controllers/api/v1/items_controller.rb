@@ -1,7 +1,7 @@
 class Api::V1::ItemsController < ApplicationController
     def index
         @items = Item.all 
-        render json: @items, include: :store, status: 200
+        render json: @items, except: [:created_at, :updated_at], status: 200
     end
 
     def show

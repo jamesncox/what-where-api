@@ -1,7 +1,7 @@
 class Api::V1::StoresController < ApplicationController
     def index
         @stores = Store.all 
-        render json: @stores, include: :items, status: 200
+        render json: @stores, include: :items, except: [:created_at, :updated_at], status: 200
     end
 
     def show 
