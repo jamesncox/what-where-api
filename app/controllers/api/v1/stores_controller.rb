@@ -5,10 +5,8 @@ class Api::V1::StoresController < ApplicationController
     end
 
     def user_stores
-        # this ALWAYS renders :user_id 2 (Emily C) regardless of who is logged in
-        @user = User.find_by(params[:id])
+        @user = User.find_by(id: params[:id])
         @stores = Store.where(:user_id => @user)
-        byebug
         render json: @stores, include: :items, except: [:created_at, :updated_at], status: 200
     end
 
