@@ -6,6 +6,9 @@ Rails.application.routes.draw do
       resources :stores
       resources :items
 
+       # fetch to custom Store route for specific user
+       get '/user_stores' => 'stores#user_stores'
+
        # sessions CSRF-TOKEN route
        get '/auth_check' => 'sessions#auth_check'
 
