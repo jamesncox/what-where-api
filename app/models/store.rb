@@ -2,7 +2,7 @@ class Store < ApplicationRecord
     belongs_to :user
     has_many :items
 
-    validates :name, presence: true
-    validates :store_type, presence: true 
-    validates :color, presence: true
+    validates :name, presence: { message: "%{value} is missing" }
+    validates :store_type, presence: { message: "%{value} is missing" }
+    validates :color, presence: { message: "%{value} of header is missing" }
 end
