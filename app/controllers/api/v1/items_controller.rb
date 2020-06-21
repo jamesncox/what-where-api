@@ -4,6 +4,12 @@ class Api::V1::ItemsController < ApplicationController
         render json: @items, except: [:created_at, :updated_at], status: 200
     end
 
+    def user_items
+        @user = User.find_by(id: params[:id])
+        @items = @user.items
+        render json: @items, except: [:created_at, :updated_at],  status: 200
+    end 
+
     def show
         @item = Item.find_by(id: params[:id])
         render json: @item, include: :store, status: 200

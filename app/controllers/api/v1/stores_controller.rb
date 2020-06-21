@@ -6,7 +6,7 @@ class Api::V1::StoresController < ApplicationController
 
     def user_stores
         @user = User.find_by(id: params[:id])
-        @stores = Store.where(:user_id => @user)
+        @stores = @user.stores
         render json: @stores, include: :items, except: [:created_at, :updated_at], status: 200
     end
 
