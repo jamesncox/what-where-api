@@ -1,18 +1,18 @@
 class Api::V1::StoresController < ApplicationController
     def index
         @stores = Store.all 
-        render json: @stores, include: :items, except: [:created_at, :updated_at], status: 200
+        render json: @stores, except: [:created_at, :updated_at], status: 200
     end
 
     def user_stores
         @user = User.find_by(id: params[:id])
         @stores = @user.stores
-        render json: @stores, include: :items, except: [:created_at, :updated_at], status: 200
+        render json: @stores, except: [:created_at, :updated_at], status: 200
     end
 
     def show 
         @store = Store.find_by(id: params[:id])
-        render json: @store, include: :items, status: 200
+        render json: @store, status: 200
     end 
 
     def create 
