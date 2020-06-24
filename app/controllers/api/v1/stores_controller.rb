@@ -17,7 +17,6 @@ class Api::V1::StoresController < ApplicationController
 
     def create 
         @store = Store.new(store_params)
-        # @user = User.find_by(id: params[:user_id])
         if @store.save
             render json: @store, include: :items, status: 200
         else
@@ -27,8 +26,11 @@ class Api::V1::StoresController < ApplicationController
 
     def update 
         @store = Store.find_by(id: params[:id])
-        @store.update(store_params)
-        render json: @store, include: :items, status: 200
+        if @store.update(store_params)
+            render json: @store, include: :items, status: 200
+        else
+            render json: { errors: @store.errors.full_messages}, status: 400
+        end
     end
 
     def destroy
