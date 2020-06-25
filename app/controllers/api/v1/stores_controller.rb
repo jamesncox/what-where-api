@@ -34,8 +34,9 @@ class Api::V1::StoresController < ApplicationController
     end
 
     def destroy
+        @store = Store.find_by(id: params[:id])
         @store.destroy
-        head :no_content
+        render json: @store, status: 200
     end 
 
     private 
