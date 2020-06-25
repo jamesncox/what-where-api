@@ -35,8 +35,9 @@ class Api::V1::ItemsController < ApplicationController
     end
 
     def destroy
+        @item = Item.find_by(id: params[:id])
         @item.destroy
-        head :no_content
+        render json: @item, status: 200
     end
 
     private 
