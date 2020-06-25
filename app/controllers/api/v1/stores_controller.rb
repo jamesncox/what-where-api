@@ -35,6 +35,7 @@ class Api::V1::StoresController < ApplicationController
 
     def destroy
         @store = Store.find_by(id: params[:id])
+        @store.items.delete_all
         @store.destroy
         render json: @store, status: 200
     end 
