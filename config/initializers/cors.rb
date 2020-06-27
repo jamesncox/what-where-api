@@ -9,17 +9,17 @@ Rails.application.config.action_controller.forgery_protection_origin_check = fal
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
 
-  allow do
-    origins 'https://buy-where.netlify.app/'
+  # allow do
+  #   origins 'https://buy-where.netlify.app/'
 
-    resource '*',
-      headers: :any,
-      methods: [:get, :post, :put, :patch, :delete, :options, :head],
-      credentials: true
-  end
+  #   resource '*',
+  #     headers: :any,
+  #     methods: [:get, :post, :put, :patch, :delete, :options, :head],
+  #     credentials: true
+  # end
 
   allow do
-    origins 'http://localhost:3001'
+    origins ['http://localhost:3001', 'https://buy-where.netlify.app/']
 
     resource '*',
       headers: :any,
