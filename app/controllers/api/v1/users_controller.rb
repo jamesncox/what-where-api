@@ -27,6 +27,14 @@ class Api::V1::UsersController < ApplicationController
         head :no_content
     end
 
+    def delete_guest_users
+        guest_users = User.where("username like ?", "%Guest%")
+        guest_stores = guest_users.each do |guest|
+            guest_users.find_by(id: guest.id).stores 
+        end
+        guest_users.delete_all 
+    end
+
     private
         def user_params
             params.require(:user).permit(:username, :password, :password_confirmation)
