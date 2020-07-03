@@ -29,20 +29,18 @@ class Api::V1::UsersController < ApplicationController
 
     def delete_guest_users
         guest_users = User.where("username like ?", "%Guest%")
-        guest_stores = []
-        guest_items = []
 
-        guest_users.each do |guest|
-            guest_stores.push(guest_users.find_by(id: guest.id).stores) 
+        guest_users.each do |guest| 
+            guest.stores.each do |store|
+                store.items.delete_all
+            end
         end
 
-        guest_users.each do |guest|
-            guest_items.push(guest_users.find_by(id: guest.id).items)
+        guest_users.each do |guest| 
+            guest.stores.delete_all
         end
 
         guest_users.delete_all
-        guest_stores.delete_all
-        guest_items.delete_all  
     end
 
     private
