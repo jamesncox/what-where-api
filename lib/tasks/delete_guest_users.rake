@@ -1,6 +1,7 @@
 desc 'Delete guest users'
 task :delete_guest_users do
-    guest_users = User.where("username like ?", "%Guest%")
+    task :create_files => :environment do
+        guest_users = User.where("username like ?", "%Guest%")
 
         guest_users.each do |guest| 
             guest.stores.each do |store|
@@ -13,4 +14,5 @@ task :delete_guest_users do
         end
 
         guest_users.delete_all
+    end
 end
